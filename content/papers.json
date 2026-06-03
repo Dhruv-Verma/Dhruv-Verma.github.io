@@ -35,7 +35,7 @@
     "authors": "**Dhruv Verma**, Sejal Bhalla, Sai Santosh, Saumya Yadav, Aman Parnami, and Jainendra Shukla.",
     "venue": "ACII 2023: 11th International Conference on Affective Computing and Intelligent Interaction",
     "description": "Human attention is more nuanced than a simple attentive/inattentive binary. Building on Sohlberg and Mateer's Clinical Model of Attention — five distinct states including focused, selective, sustained, alternating, and divided — AttentioNet uses EEG and deep learning to classify these states, demonstrating that each exhibits a measurable and unique neural signature.",
-    "image": "images/spotlight_attentionet.png",
+    "image": "images/spotlight_attentionet.jpg",
     "orient": "right",
     "links": [
       { "label": "PDF", "url": "docs/AttentioNet_ACII_2023.pdf" }
@@ -48,7 +48,7 @@
     "authors": "Vimal Mollyn, Karan Ahuja, **Dhruv Verma**, Chris Harrison, and Mayank Goel.",
     "venue": "UbiComp/IMWUT 2022: Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies",
     "description": "Most activity recognition systems trade off between context (audio) and privacy. SAMoSA combines smartwatch IMU with audio subsampled below 1 kHz — unintelligible for speech, yet sufficient to distinguish daily activities — matching the accuracy of 16 kHz audio systems while remaining power-efficient and privacy-preserving.",
-    "image": "images/spotlight_samosa.gif",
+    "image": "images/spotlight_samosa.mp4",
     "orient": "right",
     "links": [
       { "label": "Paper", "url": "https://doi.org/10.1145/3550284" },
@@ -79,7 +79,7 @@
     "authors": "**Dhruv Verma**, Kshitij Gulati, and Rajiv Ratn Shah.",
     "venue": "ACM MM 2020 &middot; BigMM 2020: ACM International Conference on Multimedia &middot; IEEE International Conference on Multimedia Big Data",
     "description": "Fashionist tackles the cold-start problem in outfit recommendation: suggesting clothing to users with little to no purchase history. A small set of style examples is enough to model preferences, leveraging joint training on fashion category and attribute prediction to learn rich, transferable fashion representations.",
-    "image": "images/spotlight_fashionist.png",
+    "image": "images/spotlight_fashionist.jpg",
     "orient": "right",
     "links": [
       { "label": "Paper", "url": "https://doi.org/10.1109/BigMM50055.2020.00043" },
