@@ -1,0 +1,91 @@
+[
+  {
+    "id": "lumosaic",
+    "title": "Lumosaic: Hyperspectral Video Using Active Illumination and Coded-Exposure Pixels",
+    "subtitle": "",
+    "authors": "**Dhruv Verma**, Andrew Qiu, Roberto Rangel, Ayandev Barman, Hao Yang, Chenjia Hu, Fengqi Zhang, Roman Genov, David B. Lindell, Kiriakos N. Kutulakos, Alex Mariakakis.",
+    "venue": "CVPR 2026: Proceedings of the 2026 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "description": "Hyperspectral imaging reveals material and appearance cues that are invisible to conventional RGB cameras, but existing systems are often expensive, bulky, and limited to still or slow-moving scenes. Lumosaic changes that. It is a compact imaging system for capturing hyperspectral video of dynamic scenes, even under strong motion. We achieve this by co-designing pixel-wise coded exposures with pulsed multi-spectral illumination to capture coded measurements, which are easily decoded by a deep learning reconstruction pipeline into 31-channel hyperspectral video at 30 FPS.",
+    "image": "images/spotlight_lumosaic.gif",
+    "orient": "right",
+    "links": [
+      { "label": "Paper", "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Verma_Lumosaic_Hyperspectral_Video_via_Active_Illumination_and_Coded-Exposure_Pixels_CVPR_2026_paper.html" },
+      { "label": "PDF",   "url": "docs/Lumosaic_CVPR_2026.pdf" },
+      { "label": "Video", "url": "https://www.youtube.com/watch?v=2qg3Deq-vHY" }
+    ]
+  },
+  {
+    "id": "chromaflash",
+    "title": "ChromaFlash: Snapshot Hyperspectral Imaging Using Rolling Shutter Cameras",
+    "subtitle": "",
+    "authors": "**Dhruv Verma**, Ian Ruffolo, David B. Lindell, Kiriakos N. Kutulakos, and Alex Mariakakis.",
+    "venue": "IMWUT 2024: Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies",
+    "description": "Hyperspectral imaging reveals a scene's material composition by capturing scene information across several narrow spectral bands, typically requiring expensive, bulky hardware. ChromaFlash brings this capability to any smartphone camera by simply exploiting the rolling shutter of commodity cameras paired with rapidly pulsing LEDs, encoding different wavelengths like a rolling shutter artifact. This co-design of illumination and capture enables snapshot hyperspectral imaging on consumer devices, without the need for any hardware synchronization, offering significant accuracy improvements over RGB-based spectral reconstruction methods.",
+    "image": "images/spotlight_chromaflash.jpg",
+    "orient": "right",
+    "links": [
+      { "label": "Paper", "url": "https://doi.org/10.1145/3678582" },
+      { "label": "PDF",   "url": "docs/ChromaFlash_ACM_IMWUT_2024.pdf" }
+    ]
+  },
+  {
+    "id": "attentionet",
+    "title": "AttentioNet",
+    "subtitle": "Classifying Student Attention Types With EEG",
+    "authors": "**Dhruv Verma**, Sejal Bhalla, Sai Santosh, Saumya Yadav, Aman Parnami, and Jainendra Shukla.",
+    "venue": "ACII 2023: 11th International Conference on Affective Computing and Intelligent Interaction",
+    "description": "Human attention is more nuanced than a simple attentive/inattentive binary. Building on Sohlberg and Mateer's Clinical Model of Attention — five distinct states including focused, selective, sustained, alternating, and divided — AttentioNet uses EEG and deep learning to classify these states, demonstrating that each exhibits a measurable and unique neural signature.",
+    "image": "images/spotlight_attentionet.png",
+    "orient": "right",
+    "links": [
+      { "label": "PDF", "url": "docs/AttentioNet_ACII_2023.pdf" }
+    ]
+  },
+  {
+    "id": "samosa",
+    "title": "SAMoSA",
+    "subtitle": "Sensing Activities With Motion and Subsampled Audio",
+    "authors": "Vimal Mollyn, Karan Ahuja, **Dhruv Verma**, Chris Harrison, and Mayank Goel.",
+    "venue": "UbiComp/IMWUT 2022: Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies",
+    "description": "Most activity recognition systems trade off between context (audio) and privacy. SAMoSA combines smartwatch IMU with audio subsampled below 1 kHz — unintelligible for speech, yet sufficient to distinguish daily activities — matching the accuracy of 16 kHz audio systems while remaining power-efficient and privacy-preserving.",
+    "image": "images/spotlight_samosa.gif",
+    "orient": "right",
+    "links": [
+      { "label": "Paper", "url": "https://doi.org/10.1145/3550284" },
+      { "label": "PDF",   "url": "docs/SAMoSA_ACM_Ubicomp_2022.pdf" },
+      { "label": "Video", "url": "https://youtu.be/QEJBaD71x_s" },
+      { "label": "Code",  "url": "https://github.com/cmusmashlab/SAMoSA" }
+    ]
+  },
+  {
+    "id": "expressear",
+    "title": "ExpressEar",
+    "subtitle": "Sensing Fine-Grained Facial Expressions with Earables",
+    "authors": "**Dhruv Verma**, Sejal Bhalla, Dhruv Sahnan, Jainendra Shukla, and Aman Parnami.",
+    "venue": "UbiComp/IMWUT 2021: Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies",
+    "description": "ExpressEar detects fine-grained facial expressions using only the inertial sensors in everyday wireless earbuds. Based on the Facial Action Coding System (FACS), it identifies individual action units — subtle muscle movements — with high accuracy, offering a privacy-preserving, camera-free alternative suitable for both stationary and mobile use.",
+    "image": "images/spotlight_expressear.jpg",
+    "orient": "right",
+    "links": [
+      { "label": "Paper",        "url": "https://doi.org/10.1145/3478085" },
+      { "label": "PDF",          "url": "docs/ExpressEar_ACM_UbiComp_2021.pdf" },
+      { "label": "Presentation", "url": "https://www.youtube.com/watch?v=AbSuQHvUABc" }
+    ]
+  },
+  {
+    "id": "fashionist",
+    "title": "Fashionist",
+    "subtitle": "Personalising Outfit Recommendation for Cold-Start Scenarios",
+    "authors": "**Dhruv Verma**, Kshitij Gulati, and Rajiv Ratn Shah.",
+    "venue": "ACM MM 2020 &middot; BigMM 2020: ACM International Conference on Multimedia &middot; IEEE International Conference on Multimedia Big Data",
+    "description": "Fashionist tackles the cold-start problem in outfit recommendation: suggesting clothing to users with little to no purchase history. A small set of style examples is enough to model preferences, leveraging joint training on fashion category and attribute prediction to learn rich, transferable fashion representations.",
+    "image": "images/spotlight_fashionist.png",
+    "orient": "right",
+    "links": [
+      { "label": "Paper", "url": "https://doi.org/10.1109/BigMM50055.2020.00043" },
+      { "label": "PDF",   "url": "docs/Addressing_IEEE_BigMM_2020.pdf" },
+      { "label": "Video", "url": "https://www.youtube.com/watch?v=kuKgPCkoPy0" },
+      { "label": "Demo",  "url": "https://doi.org/10.1145/3394171.3414446" }
+    ]
+  }
+]

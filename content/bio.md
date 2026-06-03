@@ -1,0 +1,5 @@
+I'm a PhD candidate in Computer Science at the [University of Toronto](https://www.cs.toronto.edu) ([CHAI Lab](https://chai.cs.toronto.edu/) / [DGP Lab](https://www.dgp.toronto.edu/)), advised by Prof. [Alex Mariakakis](https://mariakakis.github.io/). 
+
+My research focusses on computational imaging for intelligent sensing. I develop end-to-end systems that combine physics-based models, signal processing, machine learning, and sensor-algorithm co-design to expand vision beyond standard RGB imaging. Specifically, I design computational cameras that capture richer information about the world, enabling new capabilities in perception and scene understanding. I also explore optimal ways of capturing visual information through such cameras to support human-centred applications in interaction, accessibility, and privacy. Broadly, my work contributes to computational imaging, human-computer interaction, computer vision, and ubiquitous sensing.
+
+I'm currently a Research Intern at Samsung AI Centre and will be on the job market in Fall 2026 — feel free to reach out.

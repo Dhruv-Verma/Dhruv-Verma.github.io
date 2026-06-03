@@ -1,303 +1,498 @@
 <!DOCTYPE HTML>
 <!--
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Story by HTML5 UP — html5up.net | @ajlkn
+    Content driven by content/bio.md, content/news.md, content/papers.json
 -->
 <html>
-	<head>
-		<title>Dhruv Verma</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta property="og:image" content="images/preview.png" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" href="images/favicon.png">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
+    <head>
+        <title>Dhruv Verma</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="Dhruv Verma is a PhD candidate at the University of Toronto working on computational imaging, sensing systems, and human-computer interaction." />
+        <meta property="og:image"       content="https://dhruv-verma.com/images/preview.png" />
+        <meta property="og:title"       content="Dhruv Verma | PhD Candidate, University of Toronto" />
+        <meta property="og:description" content="PhD candidate at UofT working on computational imaging, sensing systems, and human-computer interaction." />
+        <meta property="og:url"         content="https://dhruv-verma.com" />
+        <meta property="og:type"        content="website" />
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:title"       content="Dhruv Verma | PhD Candidate, University of Toronto" />
+        <meta name="twitter:description" content="PhD candidate at UofT working on computational imaging, sensing systems, and human-computer interaction." />
+        <meta name="twitter:image"       content="https://dhruv-verma.com/images/preview.png" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="icon" href="images/favicon.png">
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@700&display=swap" rel="stylesheet">
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-181810599-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+        <!-- Google Analytics (GA4) — replace G-XXXXXXXXXX with your Measurement ID -->
+        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        </script> -->
 
-	gtag('config', 'UA-181810599-1');
-	</script>
+        <style>
+            /* ── Inter — global override ──────────────────── */
+            body, input, select, textarea, p,
+            h1, h2, h3, h4, h5, h6, .button {
+                font-family: 'Inter', Helvetica, sans-serif !important;
+            }
 
-	<body class="is-preload">
+            /* ── X (Twitter) icon ────────────────────────────── */
+            /* Use em units so the circle scales with the theme's
+               responsive font-size changes, matching other icons. */
+            .icon-x-twitter {
+                position: relative !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 2.75em !important;   /* 44px at 16px base → scales with theme */
+                height: 2.75em !important;
+                vertical-align: middle;
+            }
+            .icon-x-twitter::before {
+                content: "" !important;
+                position: absolute !important;
+                inset: 0;
+                border-radius: 100%;
+            }
+            .icon-x-twitter svg {
+                position: relative;
+                z-index: 1;
+                fill: currentColor;
+                pointer-events: none;
+            }
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="divided">
+            /* ── Devanagari greeting ──────────────────────── */
+            .namaste-deva {
+                font-family: 'Noto Sans Devanagari', sans-serif !important;
+                font-weight: 700;
+                font-size: 1em; /* match h1 size — Devanagari metrics are slightly taller so this reads as equal */
+                color: rgba(0,0,0,1);
+            }
 
-				<!-- One -->
-					<section class="banner style1 orient-right content-align-left image-position-left fullscreen onload-image-fade-in onload-content-fade-right">
-						<div class="content" style>
-							<h1>
-							<b>Namaste!</b><br>
-							I'm Dhruv Verma</h1>
-							<p>	I'm a Ph.D. student at the University of Toronto, advised by Prof. 
-								<a href="https://mariakakis.github.io/" target="_blank">Alex&nbsp;Mariakakis</a>. 
-								Broadly, my research involves advancing the capabilities of computing devices to 
-								sense and perceive information (inertial, visual, acoustic, physiological,
-								and others) relevant to understanding the human body, behaviour and the surrounding context. 
-								<br><br>
-								During my doctoral journey, I've developed a keen interest in 
-								<a href="https://en.wikipedia.org/wiki/Computational_imaging" target="_blank">computational&nbsp;imaging</a>. 
-								Specifically, in building computing infrastructure that leverages ubiquitous devices to 
-								provide a visual perspective of the world that extends beyond human perception. In realizing 
-								these systems, I bring together my expertise in signal and image processing, engineering, 
-								and machine learning with a human-centred approach at the core.
-								<br><br>
-								My endeavours are driven by a desire to unlock new possibilities and improve existing tasks enabled by 
-								sensing systems, particularly those focused on improving health outcomes and enhancing human-computer interaction. 
-								</p>
+            /* ── Greeting cycle animation ─────────────────── */
+            #greeting-text {
+                display: inline-block;
+                transition: opacity 0.35s ease;
+            }
+            #greeting-text.fading { opacity: 0; }
 
-							<!-- <p class="major">I’m a Ph.D. student at the University of Toronto advised by Prof. 
-								<a href="https://mariakakis.github.io/" target="_blank">Alex Mariakakis</a>, 
-								working at the intersection of emerging ubiquitous technologies and human-centered computing. 
-								My research focuses on building practical, unobtrusive, and deployable sensing systems that 
-								have applications in healthcare, context awareness, virtual & augmented reality, and novel interactions.</p>
-							<p class="major">Prior to my studies at U of T, I graduated with a Bachelors in Computer Science from 
-								<a href="https://iiitd.ac.in/" target="_blank">IIIT Delhi</a>. 
-								As an undergrad, I've had the pleasure to work with
-								Prof. <a href="https://amanparnami.com" target="_blank">Aman Parnami</a>, 
-								Prof. <a href="https://jainendra.in" target="_blank">Jainendra Shukla</a>, and
-								Prof. <a href="http://www.mayankgoel.com" target="_blank">Mayank Goel</a>.</p>	 -->
-							<p><b>Update: I'm seeking research internships for 2025. If you're recruiting and think 
-								I'd be a good fit, please don't hesitate to reach out!
-								</b></p>
+            /* ── TYPE SCALE ───────────────────────────────────────────────
+               Sizes:   0.875rem (all body/metadata)  ·  1rem (section intros)  ·  1.25rem (paper titles)
+               Weights: 300 (subdued metadata)  ·  400 (body)  ·  500 (medium emphasis)  ·  700 (headings/buttons)
+               ──────────────────────────────────────────────────────────── */
 
-							<ul class="icons">
-								<li><a href="mailto:dhruvverma@cs.toronto.edu" target="_blank" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
-								<li><a href="https://twitter.com/dhruvverma_" target="_blank" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.linkedin.com/in/~dhruvverma/" target="_blank" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-								<li><a href="https://scholar.google.com/citations?user=KJgi6GMAAAAJ" target="_blank" class="icon brands style2 fa-google"><span class="label">Scholar</span></a></li>
-							</ul>
+            /* Hero bio — 0.875rem / 400 */
+            section.banner .content #bio-content p { font-size: 0.875rem; line-height: 1.78; font-weight: 300; margin-bottom: 12px !important; }
 
-							<ul class="actions fit small">
-								<li><a href="docs/CV.pdf" target="_blank" class="button fit">Curriculum Vitae</a></li>
-								<li><a href="#research" class="button smooth-scroll">Research</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/potrait.jpg" alt="potrait" style="object-position: right;"/>
-						</div>
-					</section>
+            /* Section intros — 1rem / 300 */
+            .wrapper .inner p.major {
+                font-size: 1rem;
+                font-weight: 300;
+                opacity: 0.75;
+            }
+            #research p.major { font-weight: 300 !important; }
 
+            /* ── Spotlight paper cards ──────────────────── */
+            /* Paper title — 1.25rem / 500 */
+            .spotlight .content header h2 {
+                font-size: 1.25rem !important;
+                font-weight: 500 !important;
+                letter-spacing: -0.01em;
+                line-height: 1.3;
+                margin-bottom: 0.3rem;
+            }
+            /* Authors — 0.875rem / 300; own name highlighted at 500 */
+            .paper-authors {
+                font-size: 0.875rem !important;
+                font-weight: 300 !important;
+                font-style: normal !important;
+                color: rgba(0,0,0,0.5);
+                line-height: 1.5;
+                margin: 0.15rem 0 0.1rem !important;
+                letter-spacing: 0.01em;
+            }
+            .paper-authors strong {
+                font-weight: 500 !important;
+                font-style: normal !important;
+                color: rgba(0,0,0,0.72);
+            }
+            /* Venue — 0.875rem / 300 italic */
+            .paper-venue {
+                display: block;
+                font-size: 0.875rem !important;
+                font-weight: 400 !important;
+                font-style: italic;
+                letter-spacing: 0;
+                color: rgba(0,0,0,0.4);
+                margin: 0.15rem 0 0 !important;
+                line-height: 1.5;
+            }
+            /* Description — 0.875rem / 400 */
+            .paper-description {
+                font-size: 0.875rem;
+                font-weight: 300;
+                line-height: 1.9;
+                margin-top: 0.65rem !important;
+                color: rgba(0,0,0,0.7);
+            }
 
-				<!-- Filler -->
-					<section class="wrapper style1" id="research">
-						<section class="wrapper style1 align-center">
-							<div class="inner">
-								<h2>Selected Research</h2>
-								<p class="major">I publish my work at premier venues in interactive systems, sensing, and human-computer interaction. 
-									<br> Below are the highlights of my work:
-								</p>
-							</div>
-						</section>
+            /* ── Section headings — 700 ───────────────────── */
+            .wrapper .inner h2, footer .inner h2 {
+                letter-spacing: -0.025em;
+                font-weight: 700;
+            }
 
-					</section>
-				
-				<!-- ChromaFlash (Right)  -->
-				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="chromaflash">
-					<div class="content">
-						<header>
-							<h2><b>ChromaFlash:</b> Snapshot Hyperspectral Imaging Using Rolling Shutter Cameras</h2>
-							<p><b>Dhruv Verma</b>, Ian Ruffolo, David Lindell, Kyros Kutulakos, and Alex Mariakakis. <u>ACM&nbsp;IMWUT&nbsp;2024</u></p>
-						</header>
-						<p> Hyperspectral imaging is a technique which involves capturing images across multiple, narrow, contiguous bands of the 
-							electromagnetic spectrum, providing a detailed understanding of the scene's material composition. ChromaFlash brings this sophesticated 
-							capability to everyday devices equipped with standard cameras, using minimal, low-cost LED hardware and low-level image processing algorithms. 
-							The most challenging aspects of this work include capturing a 31-channel hyperspectral image at high speeds using a standard RGB camera, 
-							achieving this in a single shot rather than through multiple captures, and doing so without requiring any strict timing synchronization between 
-							the camera and LEDs.
-						</p>
-						<ul class="actions">
-							<li><a href="https://doi.org/10.1145/3678582" target="_blank" class="button">Paper</a></li>
-							<li><a href="docs/ChromaFlash_ACM_IMWUT_2024.pdf" target="_blank" class="button">PDF</a></li>
-							<!-- <li><a href="https://youtu.be/QEJBaD71x_s" target="_blank" class="button">Video</a></li> -->
-							<!-- <li><a href="https://github.com/cmusmashlab/SAMoSA" target="_blank" class="button">Code</a></li> -->
-						</ul>
-					</div>
-					<div class="image" style="background-color: inherit;">
-						<img src="images/spotlight_chromaflash.jpg" alt="ChromaFlash Illustration" style="height: 100%; width: 100%; object-fit: fit-down; object-position: center;"/>
-					</div>
-				</section>
+            /* strong/b within body text — 500 */
+            strong, b { font-weight: 500 !important; }
 
-				<!-- AttentioNet (Left)  -->
-				<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" id="attentionet">
-					<div class="content">
-						<header>
-							<h2><b>AttentioNet:</b> Classifying Student Attention Types With EEG</h2>
-							<p><b>Dhruv Verma</b>, Sejal Bhalla, Sai Santosh, Saumya Yadav, Aman Parnami, and Jainendra Shukla. <u>IEEE&nbsp;ACII&nbsp;2023</u></p>
-						</header>
-						<p> Human attention is often characterized by using simplistic computational models, such as a binary: attentive or non-attentive, or 
-							degree: low, medium, high levels. However, the Clinical Model of Attention (Sohlberg and Mateer, 2001) suggests a more nuanced
-							perspective. According to this model, there are five distinct attention states: focused, selective, sustained, alternating, and divided attention.
-							In this research, we show that different attention types exhibit unique neural activity patterns measurable with EEG. 
-							Deep learning methods may be used to create comprehensive models of human attention considering these distinctions.
-							</p>
-						<ul class="actions">
-							<li><a href="#coming_soon" target="_blank" class="button">Paper</a></li>
-							<li><a href="docs/AttentioNet_ACII_2023.pdf" target="_blank" class="button">PDF</a></li>
-						</ul>
-					</div>
-					<div class="image" style="background-color: inherit;">
-						<img src="images/spotlight_attentionet.png" alt="AttentioNet Illustration" style="height: 100%; width: 100%; object-fit: fit-down; object-position: right;"/>
-					</div>
-				</section>
+            /* ── Buttons — 700 ────────────────────────────── */
+            .button {
+                font-weight: 700 !important;
+                letter-spacing: 0.08em !important;
+            }
 
+            /* ── Section vertical density ─────────────────── */
+            /* Theme default is 7rem top/bottom — halve it for a tighter page */
+            .wrapper > .inner {
+                padding-top:    3.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+            @media (max-width: 736px) {
+                .wrapper > .inner {
+                    padding-top:    2.5rem !important;
+                    padding-bottom: 2.5rem !important;
+                }
+            }
 
-				<!-- SAMoSA (Right)  -->
-				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="samosa">
-					<div class="content">
-						<header>
-							<h2><b>SAMoSA:</b> Sensing Activities With Motion and Subsampled Audio</h2>
-							<p>Vimal Mollyn, Karan Ahuja, <b>Dhruv Verma</b>, Chris Harrison, and Mayank Goel. <u>ACM&nbsp;UbiComp/IMWUT&nbsp;2022</u></p>
-						</header>
-						<p> SAMoSA is a human-activity recognition system that leverages inertial sensors and low-fidelity 
-							audio signals from consumer-grade smartwatches. By using low-fidelity audio (sampled at less than 1 kHz) instead of typical
-							audio (greater than 16 kHz), it offers a solution that is power-efficient and privacy-preserving, since speech becomes 
-							unintelligible at these low sampling rates. Despite using lower fidelity signals, SAMoSA manages to achieve a performance 
-							comparable to systems using 16 kHz audio data when it comes to classifying various daily activities, across different contexts.   
-							</p>
-						<ul class="actions">
-							<li><a href="https://doi.org/10.1145/3550284" target="_blank" class="button">Paper</a></li>
-							<li><a href="docs/SAMoSA_ACM_Ubicomp_2022.pdf" target="_blank" class="button">PDF</a></li>
-							<li><a href="https://youtu.be/QEJBaD71x_s" target="_blank" class="button">Video</a></li>
-							<li><a href="https://github.com/cmusmashlab/SAMoSA" target="_blank" class="button">Code</a></li>
-							
+            /* ── News section ─────────────────────────────── */
+            #news .inner            { max-width: 52rem; width: 100%; box-sizing: border-box; margin: 0 auto; }
+            #news-content ul        { list-style: none; padding: 0; margin: 0; text-align: left; }
+            #news-content li        {
+                display: grid;
+                grid-template-columns: 7rem 1fr;
+                column-gap: 0.75rem;
+                align-items: baseline;
+                padding: 0.6rem 0;
+                border-bottom: 1px solid rgba(144,144,144,0.2);
+                font-size: 0.875rem;    /* align with rest of body text */
+                font-weight: 300;
+                line-height: 1.65;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+            #news-content li:last-child { border-bottom: none; }
+            #news-content li code   {
+                background: rgba(144,144,144,0.12);
+                padding: 3px 12px;
+                border-radius: 999px;
+                font-family: inherit;
+                font-size: 0.78em;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+                justify-self: start;        /* pill hugs left of its column */
+            }
+            @media (max-width: 736px) {
+                #news .inner        { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+                /* On mobile, cancel the desktop padding-left and match the theme's right side */
+                section.banner .content { padding-left: 1.833rem !important; padding-top: 1.5rem !important; }
+            }
 
-						</ul>
-					</div>
-					<div class="image" style="background-color: inherit;">
-						<img src="images/spotlight_samosa.png" alt="SAMoSA Illustration" style="height: 100%; width: 100%; object-fit: fit-down; object-position: left;"/>
-					</div>
-				</section>
+            /* ── Compact spotlight paper cards ───────────────── */
+            section.spotlight .content {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+                padding-left: 2.5rem !important;
+                padding-right: 2.5rem !important;
+            }
+            /* Force 4:3 on the image panel; align-self:center breaks out of
+               the parent's align-items:stretch so aspect-ratio takes effect */
+            section.spotlight .image {
+                aspect-ratio: 4/3 !important;
+                align-self: center !important;
+            }
+            section.spotlight .image img {
+                top: 2.5rem !important;
+                left: 2.5rem !important;
+                right: 2.5rem !important;
+                bottom: 2.5rem !important;
+                width: calc(100% - 5rem) !important;
+                height: calc(100% - 5rem) !important;
+                border-radius: 20px !important;
+            }
+            /* Portrait — padding + rounded corners only, no aspect-ratio constraint */
+            section.banner .image {
+                background: transparent !important;
+            }
+            /* Hero content horizontal padding */
+            section.banner .content {
+                padding-left: 2.5rem !important;
+                padding-right: 2.5rem !important;
+            }
+            section.banner .image img {
+                top: 10% !important;
+                bottom: 10% !important;
+                left: 2.5rem !important;
+                right: 2.5rem !important;
+                width: calc(100% - 5rem) !important;
+                height: 80% !important;   /* 100% - 10% top - 10% bottom */
+                border-radius: 20px !important;
+                object-fit: cover !important;
+                object-position: center top !important;
+            }
+            /* Subtle divider between consecutive cards */
+            section.spotlight + section.spotlight {
+                border-top: 1px solid rgba(0,0,0,0.07);
+            }
 
-				<!-- ExpressEar (Left)  -->
-					<section class="spotlight style1 orient-left content-align-left image-position-left onscroll-image-fade-in" id="expressear">
-						<div class="content">
-							<header>
-								<h2><b>ExpressEar:</b> Sensing Fine-Grained Facial Expressions with Earables</h2>
-								<p><b>Dhruv Verma</b>, Sejal Bhalla, Dhruv Sahnan, Jainendra Shukla, and Aman Parnami. <u>ACM&nbsp;UbiComp/IMWUT&nbsp;2021</u></p>
-							</header>
-							<p> ExpressEar is a system that takes advantage of inertial sensors found on everyday wireless earbuds to detect subtle
-								facial expressions. It is based on the 
-								<a href="https://www.paulekman.com/facial-action-coding-system/">Facial Action Coding System (FACS)</a>, 
-								and has the capability to detect minute facial movements, also known as facial action units, with high accuracy. ExpressEar offers a high fidelity, privacy-preserving, and an 
-								unobtrusive alternative to camera-based approaches, suitable for both stationary and mobile contexts. 
-								Its applications span various fields, including affective computing, face gesture recognition, 
-								animation and graphics, among others.  
-								</p>
-							<ul class="actions">
-								<li><a href="https://doi.org/10.1145/3478085" target="_blank" class="button">Paper</a></li>
-								<li><a href="docs/ExpressEar_ACM_UbiComp_2021.pdf" target="_blank" class="button">PDF</a></li>
-								<li><a href="https://www.youtube.com/watch?v=AbSuQHvUABc" target="_blank" class="button">Presentation</a></li>
-							</ul>
-						</div>
-						<div class="image" style="background-color: inherit;">
-							<img src="images/spotlight_expressear.jpg" alt="ExpressEar Illustration" style="height: 100%; width: 100%; object-fit: fit-down; object-position: right;"/>
-						</div>
-					</section>
+            /* ── Featured card highlight (Lumosaic) ──────── */
+            section#lumosaic {
+                background-color: #f5f5f5 !important; /* light gray */
+            }
 
-				<!-- Fashionist (Right) -->
-				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
-					<div class="content">
-						<header>
-							<h2><b>Fashionist:</b> Personalising Outfit Recommendation for Cold-Start Scenarios</h2>
-							<p><b>Dhruv Verma</b>, Kshitij Gulati, and Rajiv Ratn Shah. <u>ACM&nbsp;Multimedia&nbsp;2020</u>, <u>IEEE&nbsp;BigMM&nbsp;2020</u></p>
-						</header>
-						<p> Fashionist is an data-driven fashion recommendation system that utilizes a small set of style examples to model user
-							preferences. It harvests knowledge related to fashion concepts, semantics, and context through a joint training process, 
-							which includes predicting fashion category (e.g., jacket, pant, skirt, etc.) and attributes (e.g., 
-							sleeve length, color, texture, etc.) on publicly available fashion datasets.      
-							</p>
-						<ul class="actions">
-							<li><a href="https://doi.org/10.1109/BigMM50055.2020.00043" target="_blank" class="button">Paper</a></li>
-							<li><a href="docs/Addressing_IEEE_BigMM_2020.pdf" target="_blank" class="button">PDF</a></li>
-							<li><a href="https://www.youtube.com/watch?v=kuKgPCkoPy0" target="_blank" class="button">Video</a></li>
-							<li><a href="https://doi.org/10.1145/3394171.3414446" target="_blank" class="button">Demo</a></li>
-						</ul>
-					</div>
-					<div class="image" style="background-color: inherit;">
-						<img src="images/spotlight_fashionist.png" alt="Fashionist Illustration" style="height: 100%; width: 100%; object-fit: fit; object-position: left;"/>
-					</div>
-				</section>
+            /* ── Mobile overrides (must come AFTER all desktop rules) ──── */
+            @media (max-width: 736px) {
+                /* On mobile, restore symmetric padding */
+                section.banner .content {
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
+                }
+            }
 
-				
-				<!-- Get in touch -->
-					<!-- <section class="wrapper style1 align-center">
-						<div class="inner medium">
-							<h2>Get in touch</h2>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field half">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" value="" />
-									</div>
-									<div class="field half">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" value="" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="6"></textarea>
-									</div>
-								</div>
-								<ul class="actions special">
-									<li><input type="submit" name="submit" id="submit" value="Send Message" /></li>
-								</ul>
-							</form>
+            /* ── Positions strip — 0.875rem / 400 ────────── */
+            .positions-strip {
+                font-size: 0.875rem;
+                font-weight: 400;
+                opacity: 0.7;
+                margin-top: -0.75rem;
+                margin-bottom: 1.5rem;
+                letter-spacing: 0.01em;
+            }
+        </style>
+    </head>
 
-						</div>
-					</section> -->
+    <body class="is-preload">
+        <div id="wrapper" class="divided">
 
-				<!-- Footer -->
-					<footer class="wrapper style1 align-center ">
+            <!-- ══ HERO ═══════════════════════════════════════════════════════ -->
+            <section class="banner style1 orient-right content-align-left image-position-left fullscreen onload-image-fade-in onload-content-fade-right">
+                <div class="content">
+                    <h1><span class="namaste-deva" id="greeting-text">नमस्ते!</span><br>I'm Dhruv Verma</h1>
 
-						
-						<div class="inner">
+                    <p class="positions-strip">
+                        PhD Candidate &middot; University of Toronto
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        Research Intern &middot; Samsung AI Centre
+                    </p>
 
-							<h2>Contact Information</h2>
-								<p>
-									For any inquiries contact: <b>dhruvverma&nbsp;at&nbsp;cs&nbsp;dot&nbsp;toronto&nbsp;dot&nbsp;edu</b>.<br> 
-									I'm a member of the <a href="https://chai.cs.toronto.edu/" target="_blank">Computational Health and Interaction Lab</a> and 
-									<a href="https://www.dgp.toronto.edu/" target="_blank">Dynamic Graphics Project Lab</a> at U of T. <br> 
-									Questions regarding my lab can be directed to <b>mariakakis&nbsp;at&nbsp;cs&nbsp;dot&nbsp;toronto&nbsp;dot&nbsp;edu</b>.
-								</p>
+                    <!-- Bio loaded from content/bio.md -->
+                    <div id="bio-content"></div>
 
-								<center>
-									<!-- <div class="image" style="background-color: inherit;"> -->
-									<img src="images/logo_chai_lab.png" alt="CHAI lab logo" style="height: 30%; width: 30%; vertical-align:middle; object-position: left;"/>
-									<img src="images/logo_dgp_lab.png" alt="DGP lab logo" style="height: 30%; width: 30%; object-position: center; vertical-align:middle; margin-right: 20px;"/>
-									<img src="images/logo_uoft.png" alt="U of T logo" style="height: 22%; width: 22%; vertical-align:middle; object-position: right;"/>
-								<!-- </div> -->
-							</center>
-		
-								
-							<!-- <ul class="icons">
-								<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-								<li><a href="#" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
-							</ul> -->
-							<p>&copy; 2024 Dhruv Verma. Design Inspiration: <a href="https://html5up.net">HTML5 UP</a>.</p>
-						</div>
-					</footer>
+                    <ul class="icons">
+                        <li><a href="mailto:dhruvverma@cs.toronto.edu" target="_blank" rel="noopener noreferrer" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+                        <li><a href="https://x.com/dhruvverma_" target="_blank" rel="noopener noreferrer" class="icon brands style2 icon-x-twitter" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:0.9em;height:0.9em;" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg><span class="label">X</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/~dhruvverma/" target="_blank" rel="noopener noreferrer" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://scholar.google.com/citations?user=KJgi6GMAAAAJ" target="_blank" rel="noopener noreferrer" class="icon solid style2 fa-graduation-cap"><span class="label">Scholar</span></a></li>
+                    </ul>
 
-			</div>
+                    <ul class="actions fit small">
+                        <li><a href="docs/CV.pdf" target="_blank" rel="noopener noreferrer" class="button fit">Curriculum Vitae</a></li>
+                        <li><a href="#research" class="button smooth-scroll fit">Research</a></li>
+                    </ul>
+                </div>
+                <div class="image">
+                    <img src="images/potrait_new.jpg" alt="Dhruv Verma" style="object-position: center;" />
+                </div>
+            </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+            <!-- ══ NEWS ═══════════════════════════════════════════════════════ -->
+            <!--
+                To add a news item, edit content/news.md and prepend a line:
+                - `Mon YYYY` — Your update text with **bold** and [links](#anchor)
+            -->
+            <section class="wrapper style1 align-center" id="news">
+                <div class="inner">
+                    <h2>News</h2>
+                    <div id="news-content"><p style="opacity:0.4">Loading…</p></div>
+                </div>
+            </section>
 
-	</body>
+            <!-- ══ RESEARCH HEADER ════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center" id="research">
+                <div class="inner">
+                    <h2>Selected Research</h2>
+                    <p class="major">
+                        I publish at premier venues in computer vision, sensing, and human-computer interaction.<br>
+                        Below are highlights of my work.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ PAPERS ══════════════════════════════════════════════════════
+                 Loaded from content/papers.json.
+                 To add a paper: append an entry to that file and drop a teaser
+                 image into images/. No HTML editing required.
+            ══════════════════════════════════════════════════════════════════ -->
+            <div id="papers-content"></div>
+
+            <!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+            <footer class="wrapper style1 align-center">
+                <div class="inner" style="padding-top:2.5rem;padding-bottom:2.5rem;">
+                    <div style="display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+                        <a href="https://chai.cs.toronto.edu/" target="_blank" rel="noopener noreferrer">
+                            <img src="images/logo_chai_lab.png" alt="CHAI Lab" style="height:5rem;width:auto;opacity:0.75;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75" />
+                        </a>
+                        <a href="https://www.dgp.toronto.edu/" target="_blank" rel="noopener noreferrer">
+                            <img src="images/logo_dgp_lab.png"  alt="DGP Lab"  style="height:2.5rem;width:auto;opacity:0.75;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75" />
+                        </a>
+                        <a href="https://web.cs.toronto.edu/" target="_blank" rel="noopener noreferrer">
+                            <img src="images/logo_uoft.png"     alt="University of Toronto" style="height:5rem;width:auto;opacity:0.75;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75" />
+                        </a>
+                    </div>
+                    <p style="font-size:0.875rem;opacity:0.5;margin:0;">&copy; 2026 Dhruv Verma</p>
+                </div>
+            </footer>
+
+        </div><!-- /#wrapper -->
+
+        <!-- Theme scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+        <!-- marked.js — markdown renderer -->
+        <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+
+        <!-- ══ CONTENT LOADER ══════════════════════════════════════════════════
+             Fetches content/ files and renders them into the page.
+             Only this <script> block and the three files in content/ need
+             to be touched for routine updates.
+        ══════════════════════════════════════════════════════════════════════ -->
+        <script>
+        // Helpers at global scope so renderPaper() can access them
+        function md(str)       { return marked.parse(str);       }
+        function mdInline(str) { return marked.parseInline(str); }
+
+        (async () => {
+            async function loadText(path) {
+                const r = await fetch(path, { cache: 'no-store' });
+                if (!r.ok) throw new Error(path + ' ' + r.status);
+                return r.text();
+            }
+
+            // ── bio ───────────────────────────────────────────────
+            try {
+                document.getElementById('bio-content').innerHTML =
+                    md(await loadText('content/bio.md'));
+            } catch(e) { console.warn('bio:', e); }
+
+            // ── news ──────────────────────────────────────────────
+            try {
+                document.getElementById('news-content').innerHTML =
+                    md(await loadText('content/news.md'));
+                // Wrap everything after the date <code> pill in a <span>
+                // so CSS Grid sees exactly 2 items per row: [pill] [text]
+                document.querySelectorAll('#news-content li').forEach(li => {
+                    const code = li.querySelector('code');
+                    if (!code) return;
+                    const rest = Array.from(li.childNodes).filter(n => n !== code);
+                    if (!rest.length) return;
+                    const span = document.createElement('span');
+                    rest.forEach(n => span.appendChild(n));
+                    li.appendChild(span);
+                });
+            } catch(e) { console.warn('news:', e); }
+
+            // ── papers ────────────────────────────────────────────
+            try {
+                const papers = await (await fetch('content/papers.json', { cache: 'no-store' })).json();
+                document.getElementById('papers-content').innerHTML =
+                    papers.map(renderPaper).join('\n');
+                // Re-trigger scroll animations for freshly injected sections
+                setTimeout(() => $(window).trigger('scroll'), 80);
+            } catch(e) { console.warn('papers:', e); }
+        })();
+
+        // ── paper template ────────────────────────────────────────
+        function renderPaper(p) {
+            const subtitle = p.subtitle
+                ? `: <span style="font-weight:normal">${p.subtitle}</span>` : '';
+            const authorsHtml = p.authors
+                ? `<p class="paper-authors">${mdInline(p.authors)}</p>` : '';
+            const venueHtml = `<p class="paper-venue">${p.venue}</p>`;
+            const linkItems = p.links.map(l => {
+                const isExternal = l.url.startsWith('http') || l.url.endsWith('.pdf');
+                const attrs = isExternal
+                    ? ' target="_blank" rel="noopener noreferrer"' : '';
+                return `<li><a href="${l.url}" class="button"${attrs}>${l.label}</a></li>`;
+            }).join('');
+            const actions = linkItems
+                ? `<ul class="actions">${linkItems}</ul>` : '';
+            const descHtml = p.description
+                ? `<p class="paper-description">${mdInline(p.description)}</p>`
+                : '';
+
+            return `
+<section class="spotlight style1 orient-${p.orient} content-align-left image-position-center onscroll-image-fade-in" id="${p.id}">
+    <div class="content">
+        <header>
+            <h2>${p.title}${subtitle}</h2>
+            ${authorsHtml}
+            ${venueHtml}
+        </header>
+        ${descHtml}
+        ${actions}
+    </div>
+    <div class="image" style="background-color:inherit;">
+        <img loading="lazy" src="${p.image}?v=${Date.now()}" alt="${p.title} illustration"
+             style="height:100%;width:100%;object-fit:cover;object-position:center;" />
+    </div>
+</section>`;
+        }
+        </script>
+
+        <!-- ── Greeting cycler ────────────────────────────────────────────── -->
+        <script>
+        (function cycleGreeting() {
+            const el = document.getElementById('greeting-text');
+            const steps = [
+                { text: 'नमस्ते!', cls: true,  hold: 3000 },  // Devanagari, show 3 s
+                { text: 'Hello!',  cls: false, hold: 2200 },  // English,    show 2.2 s
+            ];
+            let i = 0;
+
+            function next() {
+                el.classList.add('fading');
+                setTimeout(() => {
+                    i = (i + 1) % steps.length;
+                    const s = steps[i];
+                    el.textContent = s.text;
+                    if (s.cls) {
+                        el.style.fontFamily = "'Noto Sans Devanagari', sans-serif";
+                        el.style.fontWeight = '700';
+                    } else {
+                        el.style.fontFamily = "'Inter', Helvetica, sans-serif";
+                        el.style.fontWeight = '700';
+                        el.style.fontSize   = '';   // drop the 0.88em correction for Latin
+                    }
+                    el.classList.remove('fading');
+                    setTimeout(next, s.hold);
+                }, 350);                            // matches CSS transition duration
+            }
+
+            // kick off after the initial hold
+            setTimeout(next, steps[0].hold);
+        })();
+        </script>
+
+    </body>
 </html>

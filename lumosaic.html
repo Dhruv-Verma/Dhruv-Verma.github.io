@@ -1,0 +1,634 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Lumosaic — Dhruv Verma</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="Lumosaic: Hyperspectral Video via Active Illumination and Coded-Exposure Pixels. CVPR 2026." />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="icon" href="images/favicon.png">
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+        <style>
+            /* ── Inter — global override ──────────────────── */
+            body, input, select, textarea, p,
+            h1, h2, h3, h4, h5, h6, .button {
+                font-family: 'Inter', Helvetica, sans-serif !important;
+            }
+
+            /* ── Section headings ─────────────────────────── */
+            .wrapper .inner h2, footer .inner h2 {
+                letter-spacing: -0.025em;
+                font-weight: 700;
+            }
+            .wrapper .inner p.major {
+                font-size: 1rem;
+                font-weight: 300;
+                opacity: 0.75;
+                font-style: italic;
+            }
+
+            /* ── Extra-bold for strong/b in content ──────── */
+            strong, b { font-weight: 500 !important; }
+
+            /* ── Buttons ──────────────────────────────────── */
+            .button {
+                font-weight: 600 !important;
+                letter-spacing: 0.08em !important;
+            }
+
+            /* ── Top nav bar ──────────────────────────────── */
+            .project-topnav {
+                padding: 0.9rem 3rem;
+                border-bottom: 1px solid rgba(0,0,0,0.07);
+                background: #fff;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            .project-topnav a {
+                font-size: 0.82rem;
+                font-weight: 500;
+                color: rgba(0,0,0,0.4);
+                letter-spacing: 0.01em;
+                text-decoration: none;
+                transition: color 0.15s;
+            }
+            .project-topnav a:hover { color: #47D3E5; }
+
+            /* ── Venue pill ───────────────────────────────── */
+            .venue-pill {
+                display: inline-block;
+                background: #47D3E5;
+                color: #fff;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.28rem 0.85rem;
+                border-radius: 999px;
+                margin-bottom: 1.25rem;
+            }
+
+            /* ── Title section overrides ──────────────────── */
+            .project-title-section h1 {
+                font-size: 2.8rem !important;
+                font-weight: 700 !important;
+                letter-spacing: -0.025em !important;
+                line-height: 1.15 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            .project-title-section .paper-subtitle {
+                font-size: 1rem;
+                font-weight: 300;
+                font-style: italic;
+                color: rgba(0,0,0,0.45);
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+            }
+            .project-title-section .paper-authors {
+                font-size: 0.875rem !important;
+                font-weight: 300 !important;
+                color: rgba(0,0,0,0.5) !important;
+                line-height: 2 !important;
+                margin-bottom: 0.25rem !important;
+            }
+            .project-title-section .paper-authors strong {
+                font-weight: 500 !important;
+                color: rgba(0,0,0,0.72) !important;
+            }
+            .project-title-section .paper-affiliation {
+                font-size: 0.8rem;
+                color: rgba(0,0,0,0.35);
+                margin-bottom: 1.75rem;
+            }
+
+            /* ── Body text ────────────────────────────────── */
+            .wrapper .inner p:not(.major):not(.paper-authors):not(.paper-affiliation):not(.paper-subtitle):not(.fig-caption) {
+                font-size: 0.875rem;
+                font-weight: 300;
+                line-height: 1.9;
+                color: rgba(0,0,0,0.7);
+            }
+
+            /* ── Figure captions ──────────────────────────── */
+            .fig-caption {
+                font-size: 0.78rem !important;
+                font-weight: 300 !important;
+                color: rgba(0,0,0,0.42) !important;
+                line-height: 1.65 !important;
+                text-align: center;
+                margin-top: 0.65rem !important;
+            }
+
+            /* ── Placeholder blocks ───────────────────────── */
+            .ph-wrap {
+                border-radius: 20px;
+                overflow: hidden;
+                background: #f4f4f4;
+                width: 100%;
+                margin-bottom: 0.65rem;
+            }
+            .ph {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.55rem;
+                padding: 3rem 2rem;
+                text-align: center;
+                background: #f4f4f4;
+                width: 100%;
+            }
+            .ph-icon { font-size: 1.8rem; opacity: 0.2; }
+            .ph-tag {
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: rgba(0,0,0,0.28);
+                background: rgba(0,0,0,0.06);
+                padding: 0.2rem 0.65rem;
+                border-radius: 999px;
+            }
+            .ph-hint {
+                font-size: 0.75rem;
+                font-weight: 300;
+                color: rgba(0,0,0,0.32);
+                max-width: 380px;
+                line-height: 1.6;
+            }
+            .ph.tall   { min-height: 380px; }
+            .ph.medium { min-height: 260px; }
+            .ph.short  { min-height: 160px; }
+
+            /* ── Video embed ──────────────────────────────── */
+            .video-wrap {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                border-radius: 20px;
+                overflow: hidden;
+                background: #111;
+                margin-bottom: 0.65rem;
+            }
+            .video-wrap iframe {
+                position: absolute;
+                inset: 0;
+                width: 100%; height: 100%;
+                border: none;
+            }
+
+            /* ── Result grids ─────────────────────────────── */
+            .grid-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                margin-bottom: 0.65rem;
+            }
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                margin-bottom: 0.65rem;
+            }
+            .grid-item { display: flex; flex-direction: column; gap: 0.4rem; }
+
+            .compare-label {
+                font-size: 0.72rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.06em !important;
+                text-transform: uppercase !important;
+                text-align: center;
+                color: rgba(0,0,0,0.4) !important;
+            }
+            .compare-label.ours { color: #47D3E5 !important; }
+
+            /* ── Result sub-headings ──────────────────────── */
+            .result-heading {
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.08em !important;
+                text-transform: uppercase !important;
+                color: rgba(0,0,0,0.35) !important;
+                margin-bottom: 0.85rem !important;
+                margin-top: 2rem !important;
+            }
+            .result-heading:first-child { margin-top: 0 !important; }
+
+            /* ── Metric table ─────────────────────────────── */
+            .metric-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 0.875rem;
+                margin-bottom: 0.5rem;
+            }
+            .metric-table th {
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: rgba(0,0,0,0.35);
+                padding: 0.5rem 0.75rem;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                text-align: left;
+            }
+            .metric-table td {
+                padding: 0.5rem 0.75rem;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                color: rgba(0,0,0,0.6);
+                font-weight: 300;
+                font-size: 0.875rem;
+            }
+            .metric-table tr:last-child td { border-bottom: none; }
+            .metric-table tr.best td { font-weight: 600; color: #1a1a1a; }
+
+            /* ── BibTeX ───────────────────────────────────── */
+            .bibtex {
+                background: rgba(144,144,144,0.08);
+                border-radius: 12px;
+                padding: 1.4rem 1.6rem;
+                font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+                font-size: 0.8rem;
+                line-height: 1.75;
+                color: rgba(0,0,0,0.55);
+                overflow-x: auto;
+                white-space: pre;
+                text-align: left;
+            }
+
+            /* ── Method callouts (plain, no bg) ───────────── */
+            .method-callouts {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                margin-top: 1.5rem;
+            }
+            .callout-title {
+                font-size: 0.875rem !important;
+                font-weight: 600 !important;
+                color: rgba(0,0,0,0.75) !important;
+                margin-bottom: 0.3rem !important;
+            }
+
+            /* ── Spotlight images on project page ─────────── */
+            .project-page section.spotlight .image {
+                aspect-ratio: 4/3 !important;
+                align-self: center !important;
+            }
+            .project-page section.spotlight .image img {
+                top: 2.5rem !important;
+                left: 2.5rem !important;
+                right: 2.5rem !important;
+                bottom: 2.5rem !important;
+                width: calc(100% - 5rem) !important;
+                height: calc(100% - 5rem) !important;
+                border-radius: 20px !important;
+            }
+            /* Divider between consecutive spotlights */
+            .project-page section.spotlight + section.spotlight {
+                border-top: 1px solid rgba(0,0,0,0.07);
+            }
+
+            /* ── Inner width for project page ─────────────── */
+            .project-page .wrapper .inner {
+                max-width: min(56rem, 100%);
+            }
+
+            /* ── ≤ 1280px ─────────────────────────────── */
+            @media screen and (max-width: 1280px) {
+                .project-topnav { padding: 0.9rem 2.5rem; }
+            }
+
+            /* ── ≤ 980px ──────────────────────────────── */
+            @media screen and (max-width: 980px) {
+                .project-topnav { padding: 0.9rem 2rem; }
+                .project-title-section h1 { font-size: 2.2rem !important; }
+            }
+
+            /* ── ≤ 736px (main theme mobile breakpoint) ─ */
+            @media screen and (max-width: 736px) {
+                .project-topnav { padding: 0.85rem 1.5rem; }
+
+                /* Title */
+                .project-title-section h1 { font-size: 1.8rem !important; }
+                .project-title-section .paper-subtitle { font-size: 0.875rem; }
+                .project-title-section .paper-authors { font-size: 0.82rem !important; line-height: 1.9 !important; }
+
+                /* Grids → single column */
+                .grid-2,
+                .grid-3,
+                .method-callouts { grid-template-columns: 1fr; gap: 1rem; }
+
+                /* Shrink tall placeholders */
+                .ph.tall   { min-height: 220px; }
+                .ph.medium { min-height: 160px; }
+                .ph.short  { min-height: 100px; }
+
+                /* BibTeX smaller font + allow scroll */
+                .bibtex { font-size: 0.72rem; padding: 1rem 1.1rem; }
+
+                /* Buttons: allow wrapping */
+                .project-title-section ul.actions { flex-wrap: wrap !important; }
+            }
+
+            /* ── ≤ 480px ──────────────────────────────── */
+            @media screen and (max-width: 480px) {
+                .project-topnav { padding: 0.8rem 1.25rem; }
+
+                .project-title-section h1 { font-size: 1.5rem !important; }
+                .project-title-section .paper-subtitle { font-size: 0.82rem; }
+                .venue-pill { font-size: 0.65rem; padding: 0.22rem 0.7rem; }
+
+                .ph.tall   { min-height: 180px; }
+                .ph.medium { min-height: 130px; }
+
+                .bibtex { font-size: 0.65rem; }
+            }
+
+            /* ── ≤ 360px ──────────────────────────────── */
+            @media screen and (max-width: 360px) {
+                .project-title-section h1 { font-size: 1.3rem !important; }
+                .bibtex { font-size: 0.6rem; padding: 0.85rem; }
+            }
+        </style>
+    </head>
+
+    <body class="is-preload project-page">
+        <div id="wrapper" class="divided">
+
+            <!-- ══ TOP NAV ══════════════════════════════════════════════════════ -->
+            <div class="project-topnav">
+                <a href="index.html">← Dhruv Verma</a>
+            </div>
+
+            <!-- ══ TITLE ════════════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center project-title-section">
+                <div class="inner">
+                    <div class="venue-pill">CVPR 2026</div>
+                    <h1>Lumosaic</h1>
+                    <p class="paper-subtitle">Hyperspectral Video via Active Illumination and Coded-Exposure Pixels</p>
+                    <p class="paper-authors">
+                        <strong>Dhruv Verma</strong>,&ensp;
+                        Andrew Qiu,&ensp;
+                        Roberto Rangel,&ensp;
+                        Ayandev Barman,&ensp;
+                        Hao Yang,&ensp;
+                        Chenjia Hu,<br>
+                        Fengqi Zhang,&ensp;
+                        Roman Genov,&ensp;
+                        David B. Lindell,&ensp;
+                        Kiriakos N. Kutulakos,&ensp;
+                        Alex Mariakakis
+                    </p>
+                    <p class="paper-affiliation">University of Toronto</p>
+                    <ul class="actions fit small" style="justify-content:center;">
+                        <li><a href="#" class="button">Paper</a></li>
+                        <li><a href="docs/Lumosaic_CVPR_2026.pdf" class="button" target="_blank" rel="noopener noreferrer">PDF</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=2qg3Deq-vHY" class="button" target="_blank" rel="noopener noreferrer">Video</a></li>
+                        <li><a href="#" class="button">Code</a></li>
+                        <li><a href="#bibtex" class="button">BibTeX</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ══ TEASER ═══════════════════════════════════════════════════════
+                 VISUAL NEEDED: Figure 1 from paper — system photo (CEP camera +
+                 LED array) + representative hyperspectral video frames across
+                 spectral channels. Animated GIF works great here.
+            ══════════════════════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <!--
+                        Replace the placeholder below with:
+                        <img src="images/lumosaic_teaser.gif" alt="Lumosaic teaser"
+                             style="width:100%;border-radius:20px;" />
+                    -->
+                    <div class="ph-wrap">
+                        <div class="ph tall">
+                            <span class="ph-icon">🎞</span>
+                            <span class="ph-tag">Teaser — Figure 1</span>
+                            <span class="ph-hint">System photo of the Lumosaic prototype (CEP camera + LED array) + representative hyperspectral video frames across spectral channels. An animated GIF works well here.</span>
+                        </div>
+                    </div>
+                    <p class="fig-caption">
+                        <strong>Lumosaic</strong> features a CEP camera synchronized with a programmable array of narrowband LEDs.
+                        Each sub-frame is assigned a unique LED and spatial exposure mask, producing a dense
+                        spatio-spectro-temporal scene encoding within a single video frame.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ ABSTRACT ═════════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <h2>Abstract</h2>
+                    <p>
+                        Hyperspectral cameras see beyond RGB — they resolve a scene's reflectance across dozens of narrow
+                        spectral bands, revealing material properties invisible to conventional imaging. The catch: more
+                        spectral channels means less light per channel, forcing a tradeoff between spectral resolution,
+                        exposure time, and frame rate that no existing system fully resolves.
+                    </p>
+                    <p>
+                        Lumosaic escapes this tradeoff through joint hardware co-design: a programmable narrowband LED
+                        array and a coded-exposure-pixel (CEP) sensor work in lockstep, encoding spectral information into
+                        both illumination and pixel-level exposure simultaneously — rather than relying on passive optics
+                        that attenuate light and assume a static scene. This produces a 31-channel hyperspectral video at
+                        30 fps and native VGA resolution, with demonstrated applications in real-time metamerism
+                        disambiguation and spectrally resolved capture of dynamic phenomena such as diffusion and
+                        effervescence.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ OVERVIEW VIDEO ════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <h2>Overview Video</h2>
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/2qg3Deq-vHY"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══ METHOD ════════════════════════════════════════════════════════
+                 VISUAL NEEDED: Pipeline overview figure — LED cycling →
+                 CEP exposure schedule → spatio-spectro-temporal mosaic →
+                 reconstruction network. Ideally 1600px+ wide, light background.
+            ══════════════════════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <h2>Method</h2>
+                    <!--
+                        Replace the placeholder below with:
+                        <img src="images/lumosaic_pipeline.png" alt="Lumosaic pipeline"
+                             style="width:100%;border-radius:20px;margin-bottom:0.65rem;" />
+                    -->
+                    <div class="ph-wrap">
+                        <div class="ph medium">
+                            <span class="ph-icon">⚙️</span>
+                            <span class="ph-tag">Pipeline Overview Figure</span>
+                            <span class="ph-hint">Diagram: LED cycling → CEP exposure schedule → spatio-spectro-temporal mosaic → learning-based reconstruction network</span>
+                        </div>
+                    </div>
+                    <p class="fig-caption" style="margin-bottom:1.5rem;">Overview of the Lumosaic sensing and reconstruction pipeline.</p>
+
+                    <div class="method-callouts">
+                        <div>
+                            <p class="callout-title">Active Illumination</p>
+                            <p>A programmable array of 12 narrowband LEDs cycles through wavelengths from 400–700 nm at microsecond precision — delivering structured spectral illumination rather than filtering broadband light that attenuates photon count.</p>
+                        </div>
+                        <div>
+                            <p class="callout-title">Coded-Exposure Pixels</p>
+                            <p>Each pixel integrates light according to a spatially tiled, per-frame exposure schedule synchronized with the LED cycle — embedding spectral identity directly into the sensor readout without any dispersive optics.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top:1.5rem;">
+                        Together, these two components produce a dense spatio-spectro-temporal mosaic within every captured
+                        frame. A learning-based reconstruction pipeline then performs temporal alignment of spectral
+                        sub-images and recovers the full hyperspectral cube per frame using a deep network trained on
+                        the system's forward model.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ RESULTS ═══════════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <h2>Results</h2>
+
+                    <!-- Quantitative -->
+                    <p class="result-heading">Quantitative Comparison</p>
+                    <!--
+                        Fill in from Figure 2: PSNR, MAE, SSIM, SAM for
+                        QDO, MST++, and Lumosaic across SPECAT/HAN/SRNet/MCAN backbones.
+                        Or drop in the figure image directly.
+                    -->
+                    <table class="metric-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>PSNR ↑</th>
+                                <th>SSIM ↑</th>
+                                <th>MAE ↓</th>
+                                <th>SAM ↓</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>QDO</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                            <tr><td>MST++</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                            <tr class="best"><td>Lumosaic (Ours)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="fig-caption" style="text-align:left;margin-bottom:2rem;">
+                        Fill in values from Figure 2 (PSNR, MAE, SSIM, SAM under varying Gaussian noise).
+                    </p>
+
+                    <!-- Qualitative -->
+                    <!--
+                        VISUAL NEEDED: Equal-size crops of the same dynamic scene
+                        reconstructed by QDO, MST++, and Lumosaic side by side.
+                    -->
+                    <p class="result-heading">Qualitative Comparisons</p>
+                    <div class="grid-3">
+                        <div class="grid-item">
+                            <div class="ph-wrap"><div class="ph short"><span class="ph-tag">QDO</span></div></div>
+                            <p class="compare-label">QDO</p>
+                        </div>
+                        <div class="grid-item">
+                            <div class="ph-wrap"><div class="ph short"><span class="ph-tag">MST++</span></div></div>
+                            <p class="compare-label">MST++</p>
+                        </div>
+                        <div class="grid-item">
+                            <div class="ph-wrap"><div class="ph short"><span class="ph-tag">Lumosaic</span></div></div>
+                            <p class="compare-label ours">Lumosaic (Ours)</p>
+                        </div>
+                    </div>
+                    <p class="fig-caption" style="margin-bottom:2rem;">
+                        Qualitative reconstruction on dynamic scenes including rigid motion, non-rigid deformation,
+                        transparent media, and free-hand panning.
+                    </p>
+
+                    <!-- Metamerism -->
+                    <!--
+                        VISUAL NEEDED: Figure 3 — (A) genuine ColorChecker RGB,
+                        (B) printed ColorChecker RGB, (C) spectral curves plot.
+                    -->
+                    <p class="result-heading">Application: Metamerism Disambiguation</p>
+                    <div class="grid-2">
+                        <div class="grid-item">
+                            <div class="ph-wrap"><div class="ph medium"><span class="ph-tag">Figure 3A–B</span><span class="ph-hint">Genuine vs printed ColorChecker — identical under RGB but distinguishable spectrally</span></div></div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="ph-wrap"><div class="ph medium"><span class="ph-tag">Figure 3C</span><span class="ph-hint">Spectral reflectance curves showing the measurable difference between genuine and printed patches</span></div></div>
+                        </div>
+                    </div>
+                    <p class="fig-caption" style="margin-bottom:2rem;">
+                        Lumosaic disambiguates a genuine ColorChecker from a printed photocopy that appears identical under standard RGB imaging.
+                    </p>
+
+                    <!-- Diffusion video -->
+                    <!--
+                        VISUAL NEEDED: Figure 4 — GIF or video of colored droplet
+                        diffusing in water at 30 fps, with spectral channel strip.
+                        Pull from supplementary video.
+                    -->
+                    <p class="result-heading">Application: Spectrally Resolved Dynamic Scenes</p>
+                    <div class="ph-wrap">
+                        <div class="ph medium">
+                            <span class="ph-icon">🎬</span>
+                            <span class="ph-tag">Figure 4 — Diffusion Video</span>
+                            <span class="ph-hint">GIF or video clip: colored droplet diffusing in water at 30 fps. Top row: sRGB over time. Bottom row: spectral channels for a representative frame.</span>
+                        </div>
+                    </div>
+                    <p class="fig-caption">
+                        Lumosaic resolves the spectral evolution of a diffusing dye at 30 fps — a dynamic phenomenon invisible to RGB cameras.
+                        <a href="https://www.youtube.com/watch?v=2qg3Deq-vHY" target="_blank" rel="noopener noreferrer">See supplementary video →</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ BIBTEX ════════════════════════════════════════════════════════ -->
+            <section class="wrapper style1 align-center" id="bibtex">
+                <div class="inner">
+                    <h2>BibTeX</h2>
+                    <pre class="bibtex">@inproceedings{verma2026lumosaic,
+  title     = {Lumosaic: Hyperspectral Video via Active Illumination
+               and Coded-Exposure Pixels},
+  author    = {Verma, Dhruv and Qiu, Andrew and Rangel, Roberto and
+               Barman, Ayandev and Yang, Hao and Hu, Chenjia and
+               Zhang, Fengqi and Genov, Roman and Lindell, David B. and
+               Kutulakos, Kiriakos N. and Mariakakis, Alex},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer
+               Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</pre>
+                </div>
+            </section>
+
+            <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+            <footer class="wrapper style1 align-center">
+                <div class="inner" style="padding-top:2rem;padding-bottom:2rem;">
+                    <p style="font-size:0.8rem;opacity:0.5;margin:0;">
+                        &copy; 2026 Dhruv Verma &nbsp;·&nbsp;
+                        <a href="index.html" style="color:inherit;">Back to main site</a>
+                    </p>
+                </div>
+            </footer>
+
+        </div><!-- /#wrapper -->
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
