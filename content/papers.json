@@ -6,7 +6,7 @@
     "authors": "**Dhruv Verma**, Andrew Qiu, Roberto Rangel, Ayandev Barman, Hao Yang, Chenjia Hu, Fengqi Zhang, Roman Genov, David B. Lindell, Kiriakos N. Kutulakos, Alex Mariakakis.",
     "venue": "CVPR 2026: Proceedings of the 2026 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
     "description": "Hyperspectral imaging reveals material and appearance cues that are invisible to conventional RGB cameras, but existing systems are often expensive, bulky, and limited to still or slow-moving scenes. Lumosaic changes that. It is a compact imaging system for capturing hyperspectral video of dynamic scenes, even under strong motion. We achieve this by co-designing pixel-wise coded exposures with pulsed multi-spectral illumination to capture coded measurements, which are easily decoded by a deep learning reconstruction pipeline into 31-channel hyperspectral video at 30 FPS.",
-    "image": "images/spotlight_lumosaic.gif",
+    "image": "images/spotlight_lumosaic.mp4",
     "orient": "right",
     "links": [
       { "label": "Paper", "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Verma_Lumosaic_Hyperspectral_Video_via_Active_Illumination_and_Coded-Exposure_Pixels_CVPR_2026_paper.html" },

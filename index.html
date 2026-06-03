@@ -216,7 +216,9 @@
                 aspect-ratio: 4/3 !important;
                 align-self: center !important;
             }
-            section.spotlight .image img {
+            section.spotlight .image img,
+            section.spotlight .image video {
+                position: absolute !important;
                 top: 2.5rem !important;
                 left: 2.5rem !important;
                 right: 2.5rem !important;
@@ -441,6 +443,16 @@
                 ? `<p class="paper-description">${mdInline(p.description)}</p>`
                 : '';
 
+            const isVideo = p.image.endsWith('.mp4');
+            const mediaSrc = `${p.image}?v=${Date.now()}`;
+            const mediaHtml = isVideo
+                ? `<video autoplay loop muted playsinline
+                       style="height:100%;width:100%;object-fit:cover;object-position:center;">
+                       <source src="${mediaSrc}" type="video/mp4">
+                   </video>`
+                : `<img loading="lazy" src="${mediaSrc}" alt="${p.title} illustration"
+                       style="height:100%;width:100%;object-fit:cover;object-position:center;" />`;
+
             return `
 <section class="spotlight style1 orient-${p.orient} content-align-left image-position-center onscroll-image-fade-in" id="${p.id}">
     <div class="content">
@@ -453,8 +465,7 @@
         ${actions}
     </div>
     <div class="image" style="background-color:inherit;">
-        <img loading="lazy" src="${p.image}?v=${Date.now()}" alt="${p.title} illustration"
-             style="height:100%;width:100%;object-fit:cover;object-position:center;" />
+        ${mediaHtml}
     </div>
 </section>`;
         }
